@@ -1,0 +1,11 @@
+install postgres
+sudo systemctl start postgresql
+sudo systemctl status postgresql
+
+# if you need it to run on startup
+sudo systemctl enable postgresql
+
+CREATE ROLE bananatreedbadmin WITH LOGIN PASSWORD 'your_password' CREATEDB;
+CREATE DATABASE bananatree;
+GRANT ALL PRIVILEGES ON DATABASE bananatree TO bananatreedbadmin;
+psql -U bananatreedbadmin -h localhost -d bananatree
